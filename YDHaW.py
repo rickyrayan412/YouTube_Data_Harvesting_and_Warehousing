@@ -392,7 +392,7 @@ channel_id = st.text_input("Enter the Channel ID:")
 channels = channel_id.split(',')
 channels = [ch.strip() for ch in channels if ch]
 
-def collect_and_store_data(channel_Id): 
+def store_data_mongodb(channel_Id): 
     for channel in channel_Id:
         ch_ids = []
         db = client["Youtube_Data"]
@@ -405,9 +405,9 @@ def collect_and_store_data(channel_Id):
             output = channel_details(channel)
             st.success(output)
 
-if st.button("Collect and Store data"):
+if st.button("Store Data in MongoDB"):
     if channels:
-        collect_and_store_data(channels)
+        store_data_mongodb(channels)
     else:
         st.warning("Please enter at least one channel ID.")
 
