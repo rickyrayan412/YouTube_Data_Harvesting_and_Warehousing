@@ -328,7 +328,7 @@ if selected=="Migrate into MongoDB and PostgreSQL":
                 mycollection.insert_one(data)
                 st.success('Migrate into mongodb',icon="✅")
 
-    st.markdown('## Select  channel name to insert into MySql')
+    st.markdown('## Select  channel name to insert into PostgreSql')
 
     ch=[]
     for i in mycollection.find():
@@ -351,7 +351,7 @@ if selected=="Migrate into MongoDB and PostgreSQL":
         channelnames=[i[0] for i in cursor.fetchall()]
         
         if user_input in channelnames:
-             st.warning('channel already inserted into MySql',icon="⚠️")
+             st.warning('channel already inserted into PostgreSql',icon="⚠️")
         else:
             with st.spinner('please wait for a while'):
                     #Reterving channel data
@@ -423,17 +423,17 @@ if selected=="Migrate into MongoDB and PostgreSQL":
                     engine = create_engine(db_url)
                 
                     try:
-                        channel_sql.to_sql('channel_details',engine,if_exists='append',index=False) #channel data into sql
-                        playlist_sql.to_sql('playlist_details',engine,if_exists='append',index=False) #playlist data into sql
-                        video_sql.to_sql('video_details',engine,if_exists='append',index=False) #video data into sql
-                        comment_sql.to_sql('comment_details', engine, if_exists='append', index=False) #comment data into sql
-                        st.success('Successfully data push into MySql', icon="✅")
+                        channel_sql.to_sql('channel_details',engine,if_exists='append',index=False) 
+                        playlist_sql.to_sql('playlist_details',engine,if_exists='append',index=False)
+                        video_sql.to_sql('video_details',engine,if_exists='append',index=False)
+                        comment_sql.to_sql('comment_details', engine, if_exists='append', index=False)
+                        st.success('Successfully data push into PostgreSql', icon="✅")
                     except Exception as e:
                         st.error(f'Error inserting comment details into MySQL: {str(e)}')
     
 
 if selected=='SQL Queries':
-    st.write("## :black[Question are given below choose one you will get the answers]")
+    st.write("## :black[Choose one of the questions below to see the answers.]")
     question=['1. Every video as well as the channel name',
              '2. Channels having the most videos',
              '3. Top 10 videos that have been viewed most',
