@@ -429,7 +429,7 @@ if selected=="Migrate into MongoDB and PostgreSQL":
                         comment_sql.to_sql('comment_details', engine, if_exists='append', index=False)
                         st.success('Successfully data push into PostgreSql', icon="✅")
                     except Exception as e:
-                        st.error(f'Error inserting comment details into MySQL: {str(e)}')
+                        st.error(f'Error inserting comment details into PostgreSql: {str(e)}')
     
 
 if selected=='SQL Queries':
